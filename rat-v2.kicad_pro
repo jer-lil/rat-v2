@@ -15,7 +15,7 @@
         "copper_text_upright": false,
         "courtyard_line_width": 0.049999999999999996,
         "dimension_precision": 4,
-        "dimension_units": 3,
+        "dimension_units": 2,
         "dimensions": {
           "arrow_length": 1270000,
           "extension_offset": 500000,
@@ -48,7 +48,7 @@
         "silk_text_thickness": 0.15,
         "silk_text_upright": false,
         "zones": {
-          "min_clearance": 0.5
+          "min_clearance": 0.25
         }
       },
       "diff_pair_dimensions": [
@@ -128,8 +128,8 @@
         "min_text_thickness": 0.15,
         "min_through_hole_diameter": 0.3,
         "min_track_width": 0.127,
-        "min_via_annular_width": 0.3,
-        "min_via_diameter": 0.5,
+        "min_via_annular_width": 0.15,
+        "min_via_diameter": 0.6,
         "solder_mask_to_copper_clearance": 0.049999999999999996,
         "use_height_for_length_calcs": true
       },
@@ -178,6 +178,7 @@
       ],
       "track_widths": [
         0.0,
+        0.2,
         0.4,
         1.0
       ],
@@ -234,7 +235,18 @@
     "equivalence_files": []
   },
   "erc": {
-    "erc_exclusions": [],
+    "erc_exclusions": [
+      "pin_not_connected|838200|1041400|9c0f1582-0047-4e27-973c-405560172421|00000000-0000-0000-0000-000000000000|/04c466f6-a501-4e7d-a93a-b598291c3fca|/04c466f6-a501-4e7d-a93a-b598291c3fca|",
+      "pin_not_connected|914400|1041400|9c0f1582-0047-4e27-973c-405560172421|00000000-0000-0000-0000-000000000000|/04c466f6-a501-4e7d-a93a-b598291c3fca|/04c466f6-a501-4e7d-a93a-b598291c3fca|",
+      "pin_not_driven|838200|1041400|9c0f1582-0047-4e27-973c-405560172421|00000000-0000-0000-0000-000000000000|/04c466f6-a501-4e7d-a93a-b598291c3fca|/04c466f6-a501-4e7d-a93a-b598291c3fca|",
+      "pin_not_driven|914400|1041400|9c0f1582-0047-4e27-973c-405560172421|00000000-0000-0000-0000-000000000000|/04c466f6-a501-4e7d-a93a-b598291c3fca|/04c466f6-a501-4e7d-a93a-b598291c3fca|",
+      "power_pin_not_driven|1727200|381000|ee7f8d86-ec54-4e70-a6af-aef6ccd61f86|00000000-0000-0000-0000-000000000000|/04c466f6-a501-4e7d-a93a-b598291c3fca|/04c466f6-a501-4e7d-a93a-b598291c3fca|",
+      "power_pin_not_driven|1955800|889000|831bb47c-8810-439e-b6c7-dec233616468|00000000-0000-0000-0000-000000000000|/04c466f6-a501-4e7d-a93a-b598291c3fca|/04c466f6-a501-4e7d-a93a-b598291c3fca|",
+      "power_pin_not_driven|2387600|508000|18bb1c39-1dd3-485e-98f3-3e63389a4ecc|00000000-0000-0000-0000-000000000000|/04c466f6-a501-4e7d-a93a-b598291c3fca|/04c466f6-a501-4e7d-a93a-b598291c3fca|",
+      "power_pin_not_driven|2413000|431800|2ef06483-b131-4611-b147-4dc86f5b6664|00000000-0000-0000-0000-000000000000|/04c466f6-a501-4e7d-a93a-b598291c3fca|/04c466f6-a501-4e7d-a93a-b598291c3fca|",
+      "power_pin_not_driven|2413000|508000|f30520a4-655c-4854-a462-c6a68a5d79a6|00000000-0000-0000-0000-000000000000|/04c466f6-a501-4e7d-a93a-b598291c3fca|/04c466f6-a501-4e7d-a93a-b598291c3fca|",
+      "power_pin_not_driven|838200|228600|a99f1ceb-d56a-4488-94b7-9b3af0546530|00000000-0000-0000-0000-000000000000|/04c466f6-a501-4e7d-a93a-b598291c3fca|/04c466f6-a501-4e7d-a93a-b598291c3fca|"
+    ],
     "meta": {
       "version": 0
     },
@@ -434,7 +446,7 @@
       "no_connect_dangling": "warning",
       "pin_not_connected": "error",
       "pin_not_driven": "error",
-      "pin_to_pin": "warning",
+      "pin_to_pin": "error",
       "power_pin_not_driven": "error",
       "similar_labels": "warning",
       "simulation_model_issue": "ignore",
@@ -452,9 +464,13 @@
       "BB_Opto",
       "BlackBox",
       "B_Relay",
-      "BB_Pads"
+      "BB_Pads",
+      "BB_Resistors",
+      "BB_Capacitor_THT"
     ],
-    "pinned_symbol_libs": []
+    "pinned_symbol_libs": [
+      "BB_Capacitor_THT_Film"
+    ]
   },
   "meta": {
     "filename": "rat-v2.kicad_pro",
@@ -464,7 +480,7 @@
     "classes": [
       {
         "bus_width": 12,
-        "clearance": 0.4,
+        "clearance": 0.2,
         "diff_pair_gap": 0.25,
         "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.2,
@@ -481,7 +497,24 @@
       },
       {
         "bus_width": 12,
-        "clearance": 0.4,
+        "clearance": 0.2,
+        "diff_pair_gap": 0.25,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "GND",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "schematic_color": "rgb(0, 0, 0)",
+        "track_width": 1.0,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.2,
         "diff_pair_gap": 0.25,
         "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.2,
@@ -490,7 +523,7 @@
         "microvia_drill": 0.1,
         "name": "Power",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "schematic_color": "rgb(194, 0, 0)",
         "track_width": 1.0,
         "via_diameter": 0.6,
         "via_drill": 0.3,
@@ -504,16 +537,16 @@
     "netclass_assignments": null,
     "netclass_patterns": [
       {
-        "netclass": "Power",
+        "netclass": "GND",
         "pattern": "GND"
       },
       {
         "netclass": "Power",
-        "pattern": "+*V"
+        "pattern": "+*V*"
       },
       {
         "netclass": "Power",
-        "pattern": "-*V"
+        "pattern": "-*V*"
       }
     ]
   },
@@ -563,30 +596,114 @@
           "group_by": false,
           "label": "Datasheet",
           "name": "Datasheet",
+          "show": false
+        },
+        {
+          "group_by": true,
+          "label": "Footprint",
+          "name": "Footprint",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Do Not Place",
+          "name": "${DNP}",
           "show": true
         },
         {
           "group_by": false,
-          "label": "Footprint",
-          "name": "Footprint",
+          "label": "Exclude from BOM",
+          "name": "${EXCLUDE_FROM_BOM}",
           "show": true
+        },
+        {
+          "group_by": false,
+          "label": "Exclude from Board",
+          "name": "${EXCLUDE_FROM_BOARD}",
+          "show": true
+        },
+        {
+          "group_by": false,
+          "label": "Exclude from Simulation",
+          "name": "${EXCLUDE_FROM_SIM}",
+          "show": true
+        },
+        {
+          "group_by": false,
+          "label": "Sim.Device",
+          "name": "Sim.Device",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Sim.Pins",
+          "name": "Sim.Pins",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Description",
+          "name": "Description",
+          "show": true
+        },
+        {
+          "group_by": true,
+          "label": "MPN",
+          "name": "MPN",
+          "show": false
         },
         {
           "group_by": false,
           "label": "Qty",
           "name": "${QUANTITY}",
-          "show": true
+          "show": false
         },
         {
-          "group_by": true,
-          "label": "DNP",
-          "name": "${DNP}",
-          "show": true
+          "group_by": false,
+          "label": "#",
+          "name": "${ITEM_NUMBER}",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Name",
+          "name": "Name",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Manufacturer",
+          "name": "Manufacturer",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "IPN",
+          "name": "IPN",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Material",
+          "name": "Material",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Tolerance",
+          "name": "Tolerance",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Capacitance",
+          "name": "Capacitance",
+          "show": false
         }
       ],
       "filter_string": "",
-      "group_symbols": true,
-      "name": "Grouped By Value",
+      "group_symbols": false,
+      "name": "",
       "sort_asc": true,
       "sort_field": "Reference"
     },
